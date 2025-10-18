@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STEM Blogs</title>
+  <style>
+    /* Global reset and base */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #f9fafc, #e8ebef);
+      margin: 0;
+      padding: 0;
+      color: #1d1d1f;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+    }
+
+    /* Navigation bar styles */
+    .top-background {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 35px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #000000;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: #005bb5;
+    }
+
+    /* Header for blogs page */
+    header {
+      background: white;
+      padding: 40px 20px;
+      box-shadow: 0 2px 15px rgb(0 0 0 / 0.07);
+      border-bottom: 1px solid #d1d1d6;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin: 0;
+      color: #111;
+    }
+
+    /* Blog container as grid */
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+      text-align: left;
+    }
+
+    .blog-post {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .blog-post:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgb(0 0 0 / 0.1);
+    }
+
+    .blog-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .blog-post h2 {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .blog-post p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #4a4a4a;
+      margin: 0;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      .blog-post h2 {
+        font-size: 1rem;
+      }
+      .blog-post p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="top-background">
+  <nav>
+    <div class="logo">
+      <img src="https://media.istockphoto.com/id/1332742978/vector/science-flat-icon-flat-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=OOBmITWmOMEM9aMsu0N4YynssiQspZCleEAeZI64c3o=" alt="STEM Logo">
+      <span style="font-weight:600; font-size:18px;">STEM Central</span>
+    </div>
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./blogs.html">Blogs</a>
+      <a href="./minigame.html">Minigame</a>
+      <a href="./videopart.html">More</a>
+	<a href="./news.html">News</a>
+	<a href="./about.html">About</a>
+	<a href="./contact.html">Contact</a>
+	<a href="./community.html">Community</a>
+    </div>
+  </nav>
+</div>
+
+<!-- Page Header -->
+<header>
+  <h1>Explore STEM Blogs</h1>
+</header>
+
+<!-- Blog Grid -->
+<main class="blog-container">
+  <article class="blog-post" tabindex="0">
+    <a href="innovators.html" class="blog-link">
+      <h2>Shaping the Next Generation of Innovators</h2>
+      <p>The STEM Strand equips Senior High School students with advanced science, math, and technology skills, preparing them for in-demand careers in medicine, engineering, IT, and research...</p>
+    </a>
+  </article>
+
+  <article class="blog-post" tabindex="0">
+    <a href="careers.html" class="blog-link">
+      <h2>Why Science and Technology Jobs Dominate the Future</h2>
+      <p>STEM careers are surging worldwide, with job growth and salaries outpacing non-STEM fields. From AI to renewable energy, these roles drive innovation and solve global challenges...</p>
+    </a>
+  </article>
+
+  <article class="blog-post" tabindex="0">
+    <a href="seniors.html" class="blog-link">
+      <h2>How Senior High Students Are Innovating for the Future</h2>
+      <p>Philippine Senior High STEM students are turning ideas into impactful innovations—from flood-monitoring devices and renewable desalination systems to food-waste power banks...</p>
+    </a>
+  </article>
+
+  <article class="blog-post" tabindex="0">
+    <a href="gallery.html" class="blog-link">
+      <h2>STEM E</h2>
+      <p>Unkabogable moments of STEM E during its early wake.</p>
+    </a>
+  </article>
+</main>
+
+</body>
+</html>

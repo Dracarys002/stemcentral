@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STEM Quiz</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #e0e5ec, #f5f7fa);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* --- Top Navigation --- */
+  .top-background {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo img {
+    height: 35px;
+    width: auto;
+    display: block;
+  }
+  .site-title {
+    font-weight: 600;
+    font-size: 18px;
+    color: #000;
+  }
+
+  .nav-links {
+    margin-left: auto;
+    display: flex;
+    gap: 24px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    transition: opacity 0.25s ease, color 0.15s ease;
+  }
+  .nav-links a:hover {
+    opacity: 0.8;
+    color: #005bb5;
+  }
+
+  /* --- Instructions Card --- */
+  .instructions {
+    max-width: 600px;
+    margin: 40px auto 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    color: #111;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .instructions h3 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .instructions ul {
+    padding-left: 20px;
+    margin: 10px 0 0;
+  }
+  .instructions li {
+    margin-bottom: 8px;
+  }
+
+  /* --- Quiz Styles --- */
+  .quiz-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 420px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+  }
+  h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #111;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 14px;
+    background-color: #f0f0f5;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    color: #111;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  }
+  button:hover {
+    background-color: #e6e6ff;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+  }
+  button:disabled {
+    background-color: #dcdce4;
+    color: #888;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  .options button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    text-align: left;
+    padding-left: 20px;
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav {
+      padding: 0;
+      gap: 12px;
+    }
+    .nav-links {
+      margin-left: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .quiz-container {
+      width: 92%;
+      margin-top: 20px;
+    }
+    .instructions {
+      margin-top: 20px;
+      width: 92%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-background">
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="logo">
+      <img src="https://media.istockphoto.com/id/1332742978/vector/science-flat-icon-flat-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=OOBmITWmOMEM9aMsu0N4YynssiQspZCleEAeZI64c3o=" alt="STEM Logo">
+      <div class="site-title">STEM Central</div>
+    </div>
+
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./blogs.html">Blogs</a>
+      <a href="./minigame.html">Minigame</a>
+      <a href="./videopart.html">More</a>
+	<a href="./news.html">News</a>
+	<a href="./about.html">About</a>
+	<a href="./contact.html">Contact</a>
+	<a href="./community.html">Community</a>
+    </div>
+  </nav>
+</div>
+
+<div class="instructions">
+  <h3>📋 How to Play the STEM Quiz</h3>
+  <ul>
+    <li>Read each question carefully before selecting an answer.</li>
+    <li>Click on your chosen option — correct answers will turn <strong style="color:green;">green</strong>, incorrect ones will show <strong style="color:red;">red</strong>.</li>
+    <li>Click <strong>Next</strong> to move to the following question.</li>
+    <li>You will answer 10 randomly selected questions per session.</li>
+    <li>At the end, view your total score and performance rating.</li>
+    <li>Click <strong>Restart Quiz</strong> to try again with a new set of questions.</li>
+  </ul>
+</div>
+
+<div class="quiz-container">
+  <h2 id="question">Loading question...</h2>
+  <div class="options" id="options"></div>
+  <button id="nextBtn" style="display:none;">Next</button>
+</div>
+
+<script>
+const questions = [
+  {q:"Which gas do plants primarily use for photosynthesis?",a:["Oxygen","Carbon Dioxide","Nitrogen","Helium"],c:1},
+  {q:"What does HTML stand for?",a:["Hyper Text Markup Language","High Transfer Markup Language","Hyperlink Text Machine Language","Hyperlink Transfer Markup"],c:0},
+  {q:"Ohm's Law relates voltage, current, and what?",a:["Resistance","Power","Charge","Capacitance"],c:0},
+  {q:"Which shape is used to represent a resistor in circuit diagrams?",a:["Rectangle","Zigzag","Circle","Triangle"],c:1},
+  {q:"What is acceleration measured in (SI)?",a:["m/s","m/s²","kg/m","N"],c:1},
+  {q:"Which number is a prime?",a:["21","27","29","33"],c:2},
+  {q:"Which device converts chemical energy to electrical energy?",a:["Motor","Battery","Generator","Transformer"],c:1},
+  {q:"What is the pH of pure water at 25°C?",a:["7","0","14","1"],c:0},
+  {q:"Which algorithmic complexity grows fastest?",a:["O(log n)","O(n)","O(n log n)","O(n²)"],c:3},
+  {q:"What does CPU stand for?",a:["Central Processing Unit","Compute Processing Unit","Central Program Unit","Control Processor Unit"],c:0},
+  {q:"What is Newton's third law?",a:["F=ma","Law of universal gravitation","For every action there's an equal and opposite reaction","Energy is conserved"],c:2},
+  {q:"Which element has atomic number 6?",a:["Carbon","Oxygen","Nitrogen","Boron"],c:0},
+  {q:"What is the typical unit for electrical capacitance?",a:["Ohm","Farad","Henry","Tesla"],c:1},
+  {q:"Which is not a programming language?",a:["Python","Ruby","HTML","C++"],c:2},
+  {q:"Which tool measures electric current?",a:["Voltmeter","Ammeter","Thermometer","Oscilloscope"],c:1},
+  {q:"Which process changes a solid directly into a gas?",a:["Melting","Sublimation","Condensation","Evaporation"],c:1},
+  {q:"Which planet is known as the Red Planet?",a:["Venus","Mars","Jupiter","Mercury"],c:1},
+  {q:"What does DNA stand for?",a:["Deoxyribonucleic Acid","Deoxyribonuclear Acid","Deoxyribo Acid","Dioxyribonucleic Acid"],c:0},
+  {q:"Which of these is a renewable energy source?",a:["Coal","Natural Gas","Solar","Oil"],c:2},
+  {q:"What is the main greenhouse gas emitted by human activity?",a:["Methane","Carbon Dioxide","Ozone","Nitrous Oxide"],c:1},
+  {q:"Which programming paradigm emphasizes objects and classes?",a:["Functional","Procedural","Object-oriented","Declarative"],c:2},
+  {q:"Which device amplifies signals in analogue electronics?",a:["Transistor","Diode","Resistor","Capacitor"],c:0},
+  {q:"What's the name of the process plants use to move water up through roots?",a:["Diffusion","Transpiration","Osmosis","Evaporation"],c:1},
+  {q:"Which method sorts by repeatedly swapping adjacent elements?",a:["Quick sort","Merge sort","Bubble sort","Heap sort"],c:2},
+  {q:"Which metal is liquid at room temperature?",a:["Mercury","Iron","Aluminum","Lead"],c:0}
+];
+
+let quizQuestions = [];
+let currentQ = 0;
+let score = 0;
+
+function startQuiz() {
+  quizQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, 10);
+  currentQ = 0;
+  score = 0;
+  document.getElementById("nextBtn").textContent = "Next";
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = quizQuestions[currentQ];
+  document.getElementById("question").textContent = q.q;
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+  q.a.forEach((option, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = option;
+    btn.onclick = () => checkAnswer(i);
+    optionsDiv.appendChild(btn);
+  });
+  document.getElementById("nextBtn").style.display = "none";
+}
+
+function checkAnswer(selected) {
+  const q = quizQuestions[currentQ];
+  if (selected === q.c) score++;
+  Array.from(document.getElementById("options").children).forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.c) btn.style.backgroundColor = "#d1e7dd"; // green
+    else if (i === selected) btn.style.backgroundColor = "#f8d7da"; // red
+  });
+  document.getElementById("nextBtn").style.display = "block";
+}
+
+document.getElementById("nextBtn").onclick = () => {
+  if (currentQ < quizQuestions.length - 1) {
+    currentQ++;
+    showQuestion();
+  } else {
+    endQuiz();
+  }
+};
+
+function endQuiz() {
+  let rating;
+  const percentage = (score / quizQuestions.length) * 100;
+  if (percentage >= 80) rating = "Excellent!";
+  else if (percentage >= 50) rating = "Good Job!";
+  else rating = "Needs Improvement";
+
+  document.getElementById("question").textContent = `Your score: ${score} / ${quizQuestions.length}`;
+  document.getElementById("options").innerHTML = `<p style="font-weight:600; font-size:18px; color:#111;">${rating}</p>`;
+  document.getElementById("nextBtn").textContent = "Restart Quiz";
+  document.getElementById("nextBtn").style.display = "block";
+  
+  document.getElementById("nextBtn").onclick = startQuiz;
+}
+
+startQuiz();
+</script>
+</body>
+</html>

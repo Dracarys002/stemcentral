@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inside the STEM Classroom</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Top background section */
+    .top-background {
+      position: relative;
+      background: url("https://dailylifeofastudent6.home.blog/wp-content/uploads/2019/11/75132181_1365368663637348_8208404319154733056_n.jpg?w=750") center/cover no-repeat;
+      color: white;
+      padding: 60px 20px 80px;
+      text-align: center;
+    }
+
+    /* Overlay for better text contrast */
+    .top-background::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+
+    /* Nav styling - moved to right */
+    nav {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      margin-bottom: 20px;
+      padding-right: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* Title styling */
+    .top-background h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    /* Blog content container */
+    .blog-container {
+      max-width: 800px;
+      margin: -40px auto 40px;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      text-align: left;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    /* Comments Section - Apple Style */
+    #comments-section {
+      margin-top: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      color: #1d1d1f;
+    }
+
+    #comments-section h3 {
+      margin-bottom: 14px;
+      border-bottom: 2px solid #0071e3;
+      padding-bottom: 6px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.02em;
+    }
+
+    #comments-list {
+      list-style: none;
+      padding: 0;
+      max-height: 280px;
+      overflow-y: auto;
+      border: 1px solid #d2d2d7;
+      border-radius: 14px;
+      background: #f5f5f7;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.05);
+      padding: 14px 20px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    #comments-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #d2d2d7;
+      font-style: normal;
+      color: #2c2c2e;
+    }
+
+    #comments-list li:last-child {
+      border-bottom: none;
+    }
+
+    #comment-form {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    #comment-text {
+      resize: vertical;
+      min-height: 90px;
+      padding: 14px 18px;
+      font-size: 1rem;
+      border-radius: 14px;
+      border: 1px solid #d2d2d7;
+      background-color: white;
+      color: #1d1d1f;
+    }
+
+    #comment-text:focus {
+      outline: none;
+      border-color: #0071e3;
+      box-shadow: 0 0 6px #0071e3aa;
+    }
+
+    #submit-comment {
+      align-self: flex-start;
+      background-color: #0071e3;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 12px rgb(0 113 227 / 0.4);
+    }
+
+    #submit-comment:hover,
+    #submit-comment:focus {
+      background-color: #005bb5;
+      box-shadow: 0 6px 18px rgb(0 91 181 / 0.6);
+      outline: none;
+    }
+
+    /* Related Links */
+    .related-links {
+      margin-top: 40px;
+      padding: 20px;
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .related-links h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .related-links ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .related-links li {
+      margin-bottom: 8px;
+    }
+
+    .related-links a {
+      color: #0071e3;
+      text-decoration: none;
+    }
+
+    .related-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top background with nav -->
+  <div class="top-background">
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./blogs.html">Blogs</a>
+      <a href="./minigame.html">Minigame</a>
+      <a href="./videopart.html">More</a>
+	<a href="./news.html">News</a>
+	<a href="./about.html">About</a>
+	<a href="./contact.html">Contact</a>
+	<a href="./community.html">Community</a>
+    </nav>
+    <h1>Inside the STEM Classroom: How Senior High Students Are Innovating for the Future</h1>
+  </div>
+
+  <!-- Main content -->
+  <div class="blog-container">
+    <p>
+      Across the Philippines, Senior High School students enrolled in the STEM Strand are pushing boundaries—from eco-innovations to energy solutions—demonstrating that real-world impact can begin in the classroom.
+    </p>
+
+    <h2>From Idea to Community Benefit</h2>
+    <p>
+      In San Carlos City, STEM students from <a href="https://www.cdstr.edu.ph" target="_blank" rel="noopener noreferrer">Colegio de Sto. Tomas-Recoletos</a> showcased their prototypes to City Mayor Renato Gustilo on March 11, 2024. One team presented the Viable Arduino-Based River Water Level Monitoring System (VAMos), while another introduced the Concentrated Autonomous Solar Technology (CAST)—innovations designed to support remote and flood-prone barangays.
+    </p>
+
+    <h2>Building Sustainable Solutions</h2>
+    <p>
+      Through the Shell NXplorers program, several student groups created sustainable technologies addressing community needs:
+    </p>
+    <ul>
+      <li>Team FarmHer Innovators from Palawan National High School developed the Veggie Crate Tracker and Mark-It App, which help markets monitor produce supply and freshness.</li>
+      <li>Team Maomag of Tagbilaran City Science High School engineered a solar-and-wind-powered desalination system to turn seawater into drinking water.</li>
+      <li>Team Portabio from Gusa Regional Science High School transformed food waste into portable energy via power banks.</li>
+    </ul>
+
+    <h2>Hands-on Research & Renewables</h2>
+    <p>
+      In Davao City, around 80–100 STEM students joined "Project Likas-Kaya!," an immersive two-day research activity held June 19–20, 2025. Organized by DOE–Mindanao and JCI Davao, the event focused on sustainable energy. Participants engaged with key industry players and learned practical solar PV technology applications.
+    </p>
+
+    <!-- Related Links -->
+    <div class="related-links">
+      <h3>Referenced Articles</h3>
+      <ul>
+        <li><a href="https://www.sunstar.com.ph/bacolod/stem-students-present-innovations?utm_source=chatgpt.com">SunStar Bacolod – STEM students present innovations to San Carlos mayor</a></li>
+        <li><a href="https://www.wheninmanila.com/shell-nxplorers-senior-high-students-creating-innovative-solutions-for-ph/?utm_source=chatgpt.com">When In Manila – Shell NXplorers: Senior High Students Creating Innovative Solutions for the Philippines</a></li>
+        <li><a href="https://www.sunstar.com.ph/davao/100-stem-students-join-research-activity-on-sustainable-energy?utm_source=chatgpt.com">SunStar Davao – 100 STEM students join research activity on sustainable energy</a></li>
+      </ul>
+    </div>
+
+    <!-- Comments Section -->
+    <section id="comments-section">
+      <button id="toggle-comments" style="font-size: 13px; padding: 6px 12px; border-radius: 6px; border: none; background: #eee; cursor: pointer;">
+        Show Comments
+      </button>
+
+      <div id="comments-container" style="display: none; margin-top: 10px;">
+        <h3 style="font-size: 14px; font-weight: 500; color: #555;">Leave an Anonymous Comment</h3>
+        <form id="comment-form">
+          <textarea id="comment-text" placeholder="Write your comment here..." required></textarea>
+          <button type="submit" id="submit-comment">Post Comment</button>
+        </form>
+
+        <h3 style="font-size: 14px; font-weight: 500; color: #555; margin-top: 20px;">Comments</h3>
+        <ul id="comments-list">
+          <!-- Comments will appear here -->
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    /* Reduced comment size */
+    #comments-section {
+      font-size: 13px;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    #comments-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+
+    #comments-list li {
+      background: rgba(0, 0, 0, 0.03);
+      padding: 6px 8px;
+      margin-bottom: 5px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    #comment-text {
+      width: 100%;
+      font-size: 12px;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    #submit-comment {
+      margin-top: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      background-color: #eee;
+      border: none;
+      cursor: pointer;
+    }
+
+    #submit-comment:hover {
+      background-color: #ddd;
+    }
+  </style>
+
+  <script>
+    const form = document.getElementById('comment-form');
+    const commentInput = document.getElementById('comment-text');
+    const commentsList = document.getElementById('comments-list');
+    const toggleButton = document.getElementById('toggle-comments');
+    const commentsContainer = document.getElementById('comments-container');
+
+    // Load saved comments
+    let comments = JSON.parse(localStorage.getItem('anonymousComments')) || [];
+
+    function renderComments() {
+      commentsList.innerHTML = '';
+      comments.forEach((comment) => {
+        const li = document.createElement('li');
+        li.textContent = comment;
+        commentsList.appendChild(li);
+      });
+    }
+
+    renderComments();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const comment = commentInput.value.trim();
+      if (comment.length === 0) return;
+
+      comments.push(comment);
+      localStorage.setItem('anonymousComments', JSON.stringify(comments));
+
+      renderComments();
+      commentInput.value = '';
+    });
+
+    toggleButton.addEventListener('click', () => {
+      if (commentsContainer.style.display === 'none') {
+        commentsContainer.style.display = 'block';
+        toggleButton.textContent = 'Hide Comments';
+      } else {
+        commentsContainer.style.display = 'none';
+        toggleButton.textContent = 'Show Comments';
+      }
+    });
+  </script>
+
+</body>
+</html>

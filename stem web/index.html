@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STEM Central</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600&display=swap" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'SF Pro Display', sans-serif;
+      background: #fff;
+      color: #000;
+      overflow-x: hidden;
+    }
+
+    /* --- Scroll Animation --- */
+    .hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Top Navigation --- */
+    .top-background {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 35px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: #0071e3;
+    }
+
+    /* --- Hero Section --- */
+    header {
+      background-image: url('https://science-teaching.org/wp-content/uploads/2022/12/stem-banner-que-es-educacion-stem.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      color: white;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+    header h1 {
+      font-size: 3em;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 20px;
+      font-weight: 400;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* --- Intro Text --- */
+    .intro-text {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #222;
+      text-align: justify;
+    }
+
+    /* --- Section Title --- */
+    .stem-heading {
+      font-weight: 700;
+      font-size: 36px;
+      text-align: center;
+      margin: 40px 20px 60px 20px;
+    }
+
+    /* --- STEM Background Sections --- */
+    .stem-section {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      color: #000;
+      overflow: hidden;
+    }
+
+    .stem-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      filter: brightness(0.85);
+    }
+
+    .stem-text {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      background: rgba(255,255,255,0.8);
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .stem-title {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .stem-meaning {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .left .stem-text {
+      margin-right: auto;
+      margin-left: 10%;
+    }
+    .right .stem-text {
+      margin-left: auto;
+      margin-right: 10%;
+    }
+
+    /* --- Featured Blogs --- */
+    .featured-blogs {
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #fafafa, #fff);
+      text-align: center;
+      border-radius: 20px;
+      margin: 40px auto;
+      max-width: 1400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .featured-blogs h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .blog-card {
+      background: white;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-card-content {
+      padding: 20px;
+    }
+
+    .blog-card-content h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .blog-card-content p {
+      margin: 0;
+      color: grey;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .stem-text {
+        margin: 0 10%;
+      }
+      .stem-section {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="top-background">
+    <nav>
+      <div class="logo">
+        <img src="https://media.istockphoto.com/id/1332742978/vector/science-flat-icon-flat-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=OOBmITWmOMEM9aMsu0N4YynssiQspZCleEAeZI64c3o=" alt="STEM Logo">
+        <span style="font-weight:600; font-size:18px;">STEM Central</span>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="./blogs.html">Blogs</a>
+        <a href="./minigame.html">Minigame</a>
+        <a href="./videopart.html">More</a>
+        <a href="./news.html">News</a>
+        <a href="./about.html">About</a>
+        <a href="./contact.html">Contact</a>
+	<a href="./community.html">Community</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <div>
+      <h1>Welcome to STEM Central</h1>
+      <p>Where Curiosity Sparks Creation</p>
+    </div>
+  </header>
+
+  <section class="intro-text hidden">
+    <p>Are you ready to challenge yourself, discover new possibilities, and build a bright future? The STEM strand is the perfect choice for students who love Science, Technology, Engineering, and Mathematics and want to dive deep into these exciting fields!</p>
+    <p>By joining the STEM strand, you’ll not only master essential skills and concepts that prepare you for college and high-demand careers, but you’ll also experience a vibrant school life full of fun and meaningful activities...</p>
+  </section>
+
+  <div class="stem-heading hidden">What is STEM?</div>
+
+  <!-- STEM Sections -->
+  <section class="stem-section left hidden" style="--bg:url('https://cdn.mos.cms.futurecdn.net/zmNSwMi3MFPJzkJSkVw6fL.jpg');">
+    <style>.left[style]::before {background-image: var(--bg);} </style>
+    <div class="stem-text">
+      <div class="stem-title">Science</div>
+      <div class="stem-meaning">Science is the pursuit of knowledge and understanding of the natural and social world through observation and experimentation. It encourages curiosity, innovation, and discovery.</div>
+    </div>
+  </section>
+
+  <section class="stem-section right hidden" style="--bg:url('https://www.airproducts.com/-/media/images/1440x810/masthead/1296904409-computer-brain-16x9.jpg');">
+    <style>.right[style]::before {background-image: var(--bg);} </style>
+    <div class="stem-text">
+      <div class="stem-title">Technology</div>
+      <div class="stem-meaning">Technology applies scientific knowledge for practical purposes. It shapes the tools, systems, and innovations that enhance our lives, industries, and communication.</div>
+    </div>
+  </section>
+
+  <section class="stem-section left hidden" style="--bg:url('https://www.discoverengineering.org/wp-content/uploads/2023/12/mj_11351_4.jpg');">
+    <style>.left[style]::before {background-image: var(--bg);} </style>
+    <div class="stem-text">
+      <div class="stem-title">Engineering</div>
+      <div class="stem-meaning">Engineering combines creativity and logic to design and build solutions to real-world problems—from bridges and machines to software and sustainable technologies.</div>
+    </div>
+  </section>
+
+  <section class="stem-section right hidden" style="--bg:url('https://www.clarkson.edu/sites/default/files/2023-06/Mathematics-Hero-1600x900.jpg');">
+    <style>.right[style]::before {background-image: var(--bg);} </style>
+    <div class="stem-text">
+      <div class="stem-title">Mathematics</div>
+      <div class="stem-meaning">Mathematics is the foundation of logical reasoning and problem-solving. It provides the language for science, technology, and engineering advancements across all fields.</div>
+    </div>
+  </section>
+
+  <!-- Featured Blogs -->
+  <section id="blogs" class="featured-blogs hidden">
+    <h2>Featured Blog Posts</h2>
+    <div class="blog-grid">
+      <a href="innovators.html" class="blog-card" style="text-decoration:none; color:inherit;">
+        <img src="https://back.3blcdn.com/images/sites/default/files/styles/ratio_3_2/public/triplepundit/wide/black%20inventors.jpg?h=528fcf08&width=640&format=auto" alt="AI in STEM" />
+        <div class="blog-card-content">
+          <h3>Shaping the Next Generation of Innovators</h3>
+          <p>The STEM Strand equips Senior High School students with advanced skills...</p>
+        </div>
+      </a>
+
+      <a href="careers.html" class="blog-card" style="text-decoration:none; color:inherit;">
+        <img src="https://www.ciit.edu.ph/wp-content/uploads/2021/05/0_header_computer-science.jpeg" alt="Engineering Beyond Math" />
+        <div class="blog-card-content">
+          <h3>Why Science and Technology Jobs Dominate the Future</h3>
+          <p>STEM careers are surging worldwide...</p>
+        </div>
+      </a>
+
+      <a href="seniors.html" class="blog-card" style="text-decoration:none; color:inherit;">
+        <img src="https://dailylifeofastudent6.home.blog/wp-content/uploads/2019/11/75132181_1365368663637348_8208404319154733056_n.jpg?w=750" alt="Math in Everyday Life" />
+        <div class="blog-card-content">
+          <h3>How Senior High Students Are Innovating for the Future</h3>
+          <p>Philippine Senior High STEM students are turning ideas into impactful innovations...</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 STEM Central. All rights reserved.
+  </footer>
+
+  <script>
+    const hiddenElements = document.querySelectorAll('.hidden');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    hiddenElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

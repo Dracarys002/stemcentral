@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEM Thoughts Wall</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600&display=swap">
+<style>
+body {
+  font-family: 'SF Pro Display', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #eaf7ff, #ffffff);
+  color: #222;
+}
+
+/* --- Top Navigation --- */
+.top-background {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 35px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #007aff;
+}
+
+/* --- Main Container --- */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  gap: 20px;
+}
+
+.main {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+}
+
+.sidebar {
+  flex: 1;
+  background: #f0f8ff;
+  border-radius: 20px;
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: #0066cc;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* --- Username Setup --- */
+.username-setup {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.username-setup input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 60%;
+}
+
+.username-setup button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #007aff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 10px;
+}
+
+.username-setup button:hover {
+  background: #000;
+}
+
+/* --- Tweet Box --- */
+#tweet-box {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+button.send {
+  background: #007aff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: flex-end;
+}
+
+button.send:hover {
+  background: #000;
+}
+
+/* --- Tweets --- */
+.tweet {
+  background: #f9f9f9;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.tweet strong {
+  color: #007aff;
+}
+
+.reply-section {
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 2px solid #e0e0e0;
+}
+
+.reply-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.reply-input textarea {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.reply-btn, .delete-btn {
+  background: #007aff;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.reply-btn:hover, .delete-btn:hover {
+  background: #000;
+}
+
+/* --- Search --- */
+.search-bar {
+  margin-bottom: 15px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* --- Sidebar --- */
+.sidebar h3 {
+  margin-top: 0;
+  color: #007aff;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.deleted {
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .sidebar {
+    max-height: none;
+    position: relative;
+    top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="top-background">
+  <nav>
+    <div class="logo">
+      <img src="https://media.istockphoto.com/id/1332742978/vector/science-flat-icon-flat-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=OOBmITWmOMEM9aMsu0N4YynssiQspZCleEAeZI64c3o=" alt="STEM Logo">
+      <span style="font-weight:600; font-size:18px;">STEM Central</span>
+    </div>
+    <div class="nav-links">
+       <a href="./index.html">Home</a>
+      <a href="./blogs.html">Blogs</a>
+      <a href="./minigame.html">Minigame</a>
+      <a href="./videopart.html">More</a>
+      <a href="./news.html">News</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./community.html">Community</a>
+    </div>
+  </nav>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="main">
+    <h1>STEM Thoughts 💡</h1>
+
+    <div class="username-setup" id="username-setup">
+      <p><strong>Choose your username:</strong></p>
+      <input type="text" id="username-input" placeholder="Enter username..." />
+      <button onclick="setUsername()">Set Username</button>
+    </div>
+
+    <div id="tweet-box">
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Search by username..." oninput="searchTweets()" />
+      </div>
+
+      <textarea id="tweet-input" placeholder="Share your thoughts about STEM..."></textarea>
+      <button class="send" onclick="postTweet()">Send</button>
+
+      <div id="tweets"></div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <h3>Registered Users</h3>
+    <ul id="user-list"></ul>
+  </div>
+</div>
+
+<script>
+let username = localStorage.getItem('stem_username');
+let tweets = JSON.parse(localStorage.getItem('stem_tweets')) || [];
+let registeredUsers = JSON.parse(localStorage.getItem('registered_users')) || [];
+
+const setupDiv = document.getElementById('username-setup');
+const tweetBox = document.getElementById('tweet-box');
+const tweetContainer = document.getElementById('tweets');
+const userList = document.getElementById('user-list');
+
+if (username) {
+  setupDiv.style.display = 'none';
+  tweetBox.style.display = 'flex';
+}
+
+updateUserList();
+renderTweets();
+
+function setUsername() {
+  const input = document.getElementById('username-input').value.trim();
+  if (!input) return alert('Enter a username!');
+  username = input;
+  localStorage.setItem('stem_username', username);
+  if (!registeredUsers.includes(username)) {
+    registeredUsers.push(username);
+    localStorage.setItem('registered_users', JSON.stringify(registeredUsers));
+  }
+  setupDiv.style.display = 'none';
+  tweetBox.style.display = 'flex';
+  updateUserList();
+}
+
+function updateUserList() {
+  userList.innerHTML = '';
+  registeredUsers.forEach(u => {
+    const li = document.createElement('li');
+    li.textContent = u;
+    userList.appendChild(li);
+  });
+}
+
+function postTweet() {
+  const content = document.getElementById('tweet-input').value.trim();
+  if (!content) return alert('Please write something!');
+  const tweet = { id: Date.now(), user: username, text: content, replies: [], deleted: false };
+  tweets.unshift(tweet);
+  localStorage.setItem('stem_tweets', JSON.stringify(tweets));
+  document.getElementById('tweet-input').value = '';
+  renderTweets();
+}
+
+function renderTweets(filtered = tweets) {
+  tweetContainer.innerHTML = '';
+  filtered.forEach(tweet => {
+    const tweetDiv = document.createElement('div');
+    tweetDiv.classList.add('tweet');
+    let contentHTML = tweet.deleted ? '<span class="deleted">This post was deleted</span>' : tweet.text;
+
+    tweetDiv.innerHTML = `
+      <strong>@${tweet.user}</strong><br>${contentHTML}
+      <div class="reply-section">
+        ${tweet.replies.map(r => `<p><strong>@${r.user}:</strong> ${r.text}</p>`).join('')}
+        ${!tweet.deleted ? `<div class="reply-input">
+          <textarea placeholder="Reply..." id="reply-${tweet.id}"></textarea>
+          <button class="reply-btn" onclick="replyToTweet(${tweet.id})">Reply</button>
+        </div>` : ''}
+      </div>
+      ${!tweet.deleted && tweet.user === username ? `<button class="delete-btn" onclick="deleteTweet(${tweet.id})">Delete</button>` : ''}
+    `;
+    tweetContainer.appendChild(tweetDiv);
+  });
+}
+
+function replyToTweet(id) {
+  const replyInput = document.getElementById(`reply-${id}`);
+  const text = replyInput.value.trim();
+  if (!text) return;
+  const tweet = tweets.find(t => t.id === id);
+  tweet.replies.push({ user: username, text });
+  localStorage.setItem('stem_tweets', JSON.stringify(tweets));
+  replyInput.value = '';
+  renderTweets();
+}
+
+function deleteTweet(id) {
+  const tweet = tweets.find(t => t.id === id);
+  tweet.deleted = true;
+  localStorage.setItem('stem_tweets', JSON.stringify(tweets));
+  renderTweets();
+}
+
+function searchTweets() {
+  const query = document.getElementById('search').value.toLowerCase();
+  const filtered = tweets.filter(t => t.user.toLowerCase().includes(query));
+  renderTweets(filtered);
+}
+</script>
+
+</body>
+</html>

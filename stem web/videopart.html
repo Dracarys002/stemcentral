@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STEM Central - Featured Video</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600&display=swap" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'SF Pro Display', sans-serif;
+      background: #fff;
+      color: #000;
+    }
+
+    .top-background {
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 35px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #444;
+    }
+
+    /* Video Section */
+    .video-section {
+      width: 100%;
+      background: linear-gradient(180deg, #ffffff 0%, #f6f6f6 100%);
+      padding: 60px 20px 40px 20px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      max-width: 1000px;
+      margin: 60px auto;
+    }
+
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      padding-top: 56.25%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-title {
+      font-size: 2.2em;
+      font-weight: 600;
+      margin: 25px 0 10px 0;
+      color: #000;
+    }
+
+    .video-desc {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 20px auto;
+      color: #000;
+    }
+
+    .video-description {
+      max-width: 800px;
+      margin: 25px auto 0 auto;
+      font-size: 17px;
+      color: #000;
+      line-height: 1.7;
+      text-align: justify;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .watch-btn {
+      display: inline-block;
+      background-color: #000;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .watch-btn:hover {
+      background-color: #333;
+    }
+
+    /* Infographic Section */
+    .infographic-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .infographic-section img {
+      width: 45%;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .infographic-text {
+      width: 50%;
+    }
+
+    .infographic-text h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .infographic-text p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #000;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .infographic-text a {
+      color: #007aff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .infographic-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Text Content */
+    .text-content-section {
+      max-width: 950px;
+      margin: 36px auto 0 auto;
+      padding: 0 20px 60px 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .text-content-section h2 {
+      font-size: 32px;
+      text-align: center;
+      font-weight: 700;
+      margin: 38px 0 18px 0;
+      color: #000;
+    }
+
+    .text-content-section p {
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      color: #000;
+      text-align: justify;
+    }
+
+    .highlight-box {
+      background: #f2f2f2;
+      border-left: 5px solid #000;
+      padding: 18px 22px;
+      margin: 28px 0;
+      border-radius: 9px;
+      font-size: 18px;
+      color: #000;
+    }
+
+    /* Blog Marquee Section (updated) */
+    .blog-marquee {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.08);
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    .blog-marquee-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-left 25s linear infinite;
+    }
+
+    .blog-marquee-content a {
+      display: inline-block;
+      margin: 0 120px; /* increased spacing between items */
+      font-size: 18px;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .blog-marquee-content a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      font-size: 15px;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .video-section, .text-content-section {
+        padding: 20px 5px;
+      }
+      .infographic-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .infographic-section img {
+        width: 100%;
+      }
+      .infographic-text {
+        width: 100%;
+      }
+      .video-title { font-size: 1.4em; }
+      .text-content-section h2 { font-size: 1.4em; }
+      .blog-marquee-content a {
+        margin: 0 60px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-background">
+  <nav>
+    <div class="logo">
+      <img src="https://media.istockphoto.com/id/1332742978/vector/science-flat-icon-flat-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=OOBmITWmOMEM9aMsu0N4YynssiQspZCleEAeZI64c3o=" alt="STEM Logo">
+      <span style="font-weight:600; font-size:18px;">STEM Central</span>
+    </div>
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./blogs.html">Blogs</a>
+      <a href="./minigame.html">Minigame</a>
+      <a href="./videopart.html">More</a>
+	<a href="./news.html">News</a>
+	<a href="./about.html">About</a>
+	<a href="./contact.html">Contact</a>
+	<a href="./community.html">Community</a>
+    </div>
+  </nav>
+</div>
+
+<section class="video-section">
+  <div class="video-title">Exploring STEM: The Power of Curiosity</div>
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/fBDjjdg_ytk"
+      title="STEM Introduction"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="video-desc">
+    Discover how Science, Technology, Engineering, and Mathematics shape the world we live in.
+  </div>
+
+  <div class="video-description">
+    STEM education encourages creativity and curiosity—allowing students to explore, question, and innovate. It bridges theory with practice, giving learners the confidence to tackle real-world issues like sustainability, healthcare, and technological advancement. By connecting critical thinking and collaboration, STEM shapes not just future careers, but future changemakers.
+  </div>
+
+  <a href="https://www.youtube.com/watch?v=fBDjjdg_ytk" class="watch-btn" target="_blank">Watch on YouTube</a>
+</section>
+
+<section class="infographic-section">
+  <img src="https://i.postimg.cc/MT2VJCdD/Screenshot-2025-10-18-220446.png" alt="STEM Infographic">
+  <div class="infographic-text">
+    <h2>Under Pressure</h2>
+    <p>
+      The infographic “Under Pressure: STEM Students and Stress” illustrates the challenges faced by STEM students due to heavy workloads, strict deadlines, and high academic expectations. It highlights how these pressures can lead to anxiety, burnout, and emotional exhaustion. To cope, students are encouraged to practice effective time management, mindfulness and relaxation, and seeking support from others. The infographic emphasizes the importance of balancing academic excellence with mental well-being, promoting awareness and healthy habits to manage stress and maintain overall wellness.y.
+    </p>
+    <p>
+      Students are encouraged to explore beyond textbooks and use creativity to solve real-world challenges. Learn more about STEM programs at 
+      <a href="https://www.deped.gov.ph/" target="_blank">DepEd Philippines</a>, 
+      <a href="https://www.stem.org.uk/" target="_blank">STEM.org.uk</a>, and 
+      <a href="https://www.nasa.gov/stem" target="_blank">NASA STEM</a>.
+    </p>
+  </div>
+</section>
+
+<section class="text-content-section">
+  
+  <div class="highlight-box">
+    "Where Curiosity Sparks Creation"
+  </div>
+  
+<!-- Updated Blog Scrolling Section -->
+<div class="blog-marquee">
+  <div class="blog-marquee-content">
+    <a href="innovators.html">Shaping the Next Generation of Innovators</a>
+    <a href="seniors.html">Inside the STEM Classroom: How Senior High Students Are Innovating for the Future</a>
+    <a href="careers.html">The Rise of STEM Careers: Why Science and Technology Jobs Dominate the Future</a>
+  </div>
+</div>
+
+<!-- ... your previous content ... -->
+
+<!-- STEM Activities Section -->
+<section class="stem-activities-section" style="padding:60px 20px; background:#f9f9f9;">
+  <div style="max-width:1000px; margin:auto;">
+    <h2 style="font-size:2.4em; text-align:center; margin-bottom:40px;">STEM Activities You Can Join</h2>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+      
+      <!-- Activity Card -->
+      
+      <div style="background:#fff; border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,0.08); width:250px; text-align:center; overflow:hidden;">
+        <img src="https://scontent-mnl1-1.xx.fbcdn.net/v/t39.30808-6/560333164_122175125666547193_5766171981287301118_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHVnMlujMz-bEiyurLZtckT9-30HA1Ahkf37fQcDUCGR9-hbtXFqOLslTz148eC0VtoyJh7zHR8RDJkTYERFeTY&_nc_ohc=u7uNGNxjFpgQ7kNvwHQTRBc&_nc_oc=AdnGZPuwPKbaI1h550s8T8xSSR-rowKVM_Lf8jBEhb33zeFJELArkNXavUwhDQwyKh8&_nc_zt=23&_nc_ht=scontent-mnl1-1.xx&_nc_gid=7tZUBTzA1jCzHitnCNN81w&oh=00_AfciruRQDDqzFT8f8lkFNqUDQyrrro-YdEh0HtwVKFGkIQ&oe=68F99132" alt="Performances" style="width:100%; height:150px; object-fit:cover;">
+        <div style="padding:15px;">
+          <h3>Performances</h3>
+          <p style="font-size:15px; line-height:1.5;">Showcase creativity through performances that combine STEM concepts with art and drama.</p>
+        </div>
+      </div>
+
+      <div style="background:#fff; border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,0.08); width:250px; text-align:center; overflow:hidden;">
+        <img src="https://scontent-mnl1-2.xx.fbcdn.net/v/t39.30808-6/541006546_122169497114547193_2106172124580134044_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeE5kFaLnvLMV6K74O05qG6rycFEc2_Kg4_JwURzb8qDj5mCTx_-cE2hPOxjky6hgbJlmTM9tijRV-RWAqJH_K7v&_nc_ohc=0deQuYJGcuAQ7kNvwEIPXMF&_nc_oc=AdkJpYCxbO6AowK-w4Vq7N64INw-MYLEOCFRxAdNs5S2Zbb-HaqavOFPSO0F_KEvL-k&_nc_zt=23&_nc_ht=scontent-mnl1-2.xx&_nc_gid=XJdD4y_4ipvHB7s-L4C0ag&oh=00_AfcADnHC8cFUm6hPclpD_0D2mJXRmPkMmQVkuxrAmp9XgA&oe=68F9BDD2" alt="Divisional Presenting" style="width:100%; height:150px; object-fit:cover;">
+        <div style="padding:15px;">
+          <h3>Divisional Presenting</h3>
+          <p style="font-size:15px; line-height:1.5;">Present your STEM projects at the divisional level and get recognized for innovation and teamwork.</p>
+        </div>
+      </div>
+
+      <div style="background:#fff; border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,0.08); width:250px; text-align:center; overflow:hidden;">
+        <img src="https://dynomapper.com/images/5_tips_for_creating_a_great_website.jpg" alt="Website Making" style="width:100%; height:150px; object-fit:cover;">
+        <div style="padding:15px;">
+          <h3>Website Making</h3>
+          <p style="font-size:15px; line-height:1.5;">Learn web development and design your own STEM projects online, perfect for beginners and enthusiasts.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Facebook Videos Section -->
+<section class="fb-videos-section" style="padding:60px 20px; background:#fff;">
+  <div style="max-width:1000px; margin:auto;">
+    <h2 style="font-size:2.4em; text-align:center; margin-bottom:40px;">Watch More STEM Videos on Facebook</h2>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; align-items:flex-start;">
+
+      <!-- First Facebook Video Embed -->
+      <div style="flex:1 1 320px; max-width:320px; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1326299885690371%2F&show_text=false&width=560" 
+          width="100%" height="180" 
+          style="border:none;overflow:hidden" 
+          scrolling="no" frameborder="0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+
+      <!-- Second Facebook Video Embed -->
+      <div style="flex:1 1 320px; max-width:320px; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61566415803279%2Fvideos%2F1379380416389755%2F&show_text=false&width=560" 
+          width="100%" height="180" 
+          style="border:none;overflow:hidden" 
+          scrolling="no" frameborder="0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 STEM Central. All rights reserved.
+</footer>
+
+</body>
+</html>
